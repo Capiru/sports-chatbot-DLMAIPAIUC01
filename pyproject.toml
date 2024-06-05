@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "demo-sports-chatbot"
+version = "0.1.0"
+description = "This is a sports chatbot application as part of the DLMAIPAIUC01 course."
+authors = ["Capiru <gabriel.silva.2@deliveryhero.com>"]
+readme = "README.md"
+packages = [{include = "demo_sports_chatbot"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.35.0"
+transformers = "^4.41.2"
+torch = "^2.3.0"
+numpy = "^1.26.4"
+pandas = "^2.2.2"
+scikit-learn = "^1.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
