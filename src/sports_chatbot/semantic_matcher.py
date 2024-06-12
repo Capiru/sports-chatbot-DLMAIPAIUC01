@@ -13,9 +13,9 @@ class SemanticMatcherModule:
         self.dataset_module = dataset_module
         self.tokenizer = AutoTokenizer.from_pretrained(embedder_model)
         self.embedding_model = AutoModel.from_pretrained(embedder_model)
-        self.embeddings = self._embed_data(self.dataset_module.data)
+        self.dataset_module.embed_dataframe(self._embed_data)
 
-    def _embed_data(self, data):
+    def _embed_data(self, data) -> np.ndarray:
         """Embed each line in the CSV file as a vector."""
         lines = data.apply(
             lambda row: " ".join(row.values.astype(str)), axis=1
@@ -46,7 +46,9 @@ class SemanticMatcherModule:
                 .squeeze()
                 .numpy()
             )
-        similarities = cosine_similarity([query_embedding], self.embeddings)[0]
+        similarities = cosine_similarity(
+            [query_embedding], self.dataset_module.embeddings
+        )[0]
         top_indices = np.argsort(similarities)[-top_n:][::-1]
         return self.dataset_module.data.iloc[top_indices]
 
