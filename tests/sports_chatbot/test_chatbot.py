@@ -1,8 +1,8 @@
 from sports_chatbot.chatbot import SportsChatbot
 
 
-def test_chatbot():
-    chatbot = SportsChatbot("./data/sports_chatbot/Day_1.csv")
+def test_chatbot(csv_path):
+    chatbot = SportsChatbot(csv_path)
     context = chatbot.get_contextual_response(
         "Which team is playing the Red Sox? Please remembe to always answer fully in a nic and educated manner."
     )
