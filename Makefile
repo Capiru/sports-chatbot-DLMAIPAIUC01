@@ -14,4 +14,4 @@ check:  # Run unit tests
 	poetry run py.test tests/sports_chatbot
 
 app:  # Runs the streamlit chatbot app
-	poetry run streamlit run src/chat_app/chat.py
+	poetry run streamlit run src/chat_app/chat_ui.py
